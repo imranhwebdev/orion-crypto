@@ -12,6 +12,7 @@ import Roadmap from '../components/Roadmap';
 import TokenOrion from '../components/TokenOrion';
 import Team from '../components/Team';
 import Portfolio from '../components/Portfolio';
+import Tokenomics from '../components/Tokenomics';
 
 function index() { 
   return (
@@ -27,6 +28,7 @@ function index() {
       <Invest />
       <Roadmap />
       <TokenOrion />
+      <Tokenomics />
       <Team />
       <Faq />
       <Brands />
