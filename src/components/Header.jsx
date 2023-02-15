@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "../assets/img/site-logo.svg";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
@@ -11,9 +11,26 @@ const Header = (...props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  
+    // STICKY NAVBAR
+    const [stickyClass, setStickyClass] = useState('');
+    const stickNavbar = () => {
+        if (window !== undefined) {
+            let windowHeight = window.scrollY;
+            windowHeight > 0 ? setStickyClass(' sticky-navbar') : setStickyClass('');
+        }
+    };
+    useEffect(() => {
+        window.addEventListener('scroll', stickNavbar);
+
+        return () => {
+            window.removeEventListener('load', stickNavbar);
+        };
+    }, [])
+
   return (
     <div>
-      <header className="header-area">
+      <header className={"header-area" + stickyClass}>
         <nav id="navbar_top" className="navbar navbar-expand-xl navbar-dark">
           <Container className="align-items-center">
             <div className="header-left">
@@ -83,6 +100,8 @@ const Header = (...props) => {
             </a>
         </Offcanvas.Body>
       </Offcanvas>
+
+      <div className={"backtop" + stickNavbar}></div>
     </div>
   );
 };

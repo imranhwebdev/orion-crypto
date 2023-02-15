@@ -165,6 +165,11 @@ div::-webkit-scrollbar {
   padding-top: 25px;
 }
 
+.sticky-navbar{
+  position: fixed;
+  z-index: 9;
+}
+
 .header-right {
   display: flex;
   align-items: center;
